@@ -205,7 +205,7 @@ public class AdminController {
 	
 	//get all images names
 	public List<File> getProductImgs() {
-		String saveDirectory = "C://Users//Sergey//Desktop//eShopImages//Images//";
+		String saveDirectory = "C://Users//Максим//Desktop//eShopImages//Images//";
 		File[] files = new File(saveDirectory).listFiles();
 		return Arrays.asList(files);
 	}

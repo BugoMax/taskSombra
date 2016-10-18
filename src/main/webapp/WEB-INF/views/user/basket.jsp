@@ -18,18 +18,14 @@
 			span {
 				cursor: pointer;
 			}
-			
 			.minus, .plus {
 				padding: 3px 5px 3px 5px;
-			
 			}
-			
 			input {
 				height: 26px;
 				padding: 0px 0px 0px 0px;  
 			}
 		</style>
-		
 		<script type="text/JavaScript"
 			src="${pageContext.request.contextPath}/resources/js/jquery-1.9.1.min.js">
 			
@@ -86,25 +82,26 @@
 				});
 			}
 		</script>
+		<link href="<c:url value="/resources/css/style_new.css" />"rel="stylesheet">
 		<title>Cart</title>
 	</head>
 	<body>
 		<cf:form method="GET" action="confirm" modelAttribute="product">
-			<table class="zui-table zui-table-highlight-all" align="center">
-				<tr>
-				<th>Photo</th>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Qty</th>
-				<th>Total</th>
-				<th>Remove</th>
+			<table class="zui-table zui-table-highlight-all cart" align="center">
+				<tr class="cart_title">
+					<th>Photo</th>
+					<th>Name</th>
+					<th>Price</th>
+					<th>Qty</th>
+					<th>Total</th>
+					<th>Remove</th>
 				</tr>
 				<c:forEach var="product" items="${basketList}">
 					
 					<tr>
 						<td>
-						<div>
-						 <a href="product${product.id}"> 
+						<div class="cart_img-wrap">
+						 <a class="cart_img" href="product${product.id}"> 
 						 <c:if test="${product.imgPath == null}">
 										<img alt="${product.productName}" border="0"
 										src="<c:url value="/resources/images/default.jpg" />"
@@ -112,43 +109,49 @@
 								</c:if> 
 								<c:if test="${product.imgPath != null}">
 									<img alt="${product.productName}" border="0"
-										src="admin/image?imgName=${product.imgPath}" width="130"
-										height="120" />
+										src="admin/image?imgName=${product.imgPath}" width="230"
+										height="220" />
 								</c:if>
-						</a>
+						 </a>
 						</div>
 						</td>
-						<td>${product.productName}</td>
-						<td><div>
-						<input type="hidden" id="price${product.id}" value="${product.price}"/>	
-						${product.price}
-						</div></td>
-						<td><div>
-								<span class="minus"><a
-									href="javascript:minusFromBasket(${product.id})"><img 
-									src="<c:url value="/resources/images/minus.png" />"
-								width="30" height="30"/></a></span> <input
+						<td class="cart_name">${product.productName}</td>
+						<td class="cart_price">
+							<div>
+								<input type="hidden" id="price${product.id}" value="${product.price}"/>	
+									${product.price}
+							</div>
+						</td>
+						<td class="cart_qty">
+							<div>
+								<span class="minus">
+									<a href="javascript:minusFromBasket(${product.id})"><span class="glyphicon glyphicon-minus cart_minus"></span>
+									</a>
+								</span> 
+								<input
 									type="text" value="${product.basketQty}" id="${product.id}idQty"
 									name="${product.id}idQty" size="3" /> <span class="plus"><a
-									href="javascript:plusToBasket(${product.id})"><img 
-									src="<c:url value="/resources/images/plus.png" />"
-								width="30" height="30" /></a></span>
-							</div></td>
+									href="javascript:plusToBasket(${product.id})"><span class="glyphicon glyphicon-plus cart_plus"></span></a></span>
+							</div>
+						</td>
 					
 						<!--  PUT BUTTON -->
 						<c:set var="totalItem" value="${product.price*product.basketQty}" />
-						<td>
-						<div id="totalItem${product.id}">${totalItem}</div>
+						<td class="cart_total">
+							<div id="totalItem${product.id}">${totalItem}</div>
 						</td>
 						<c:set var="total" value="${totalItem+total}" />
-							<td><a href="remove${product.id}" title="Remove"><img
-								alt="Remove" border="0"
-								src="<c:url value="/resources/images/remove.png" />"
-								width="30" height="30" /></a></td>
+						<td class="cart_remove">
+							<a href="remove${product.id}" title="Remove"><span class="glyphicon glyphicon-trash"></span></a>
+						</td>
 					</tr>
 				</c:forEach>
-				<tr><td>Total: <div id = "total">${total}</div></td>
-				<td align="right"><input type="submit" value="Confirm" /></td></tr>
+				<tr>
+					<td class="cart_total-whole">Total: <div id = "total">${total}</div></td>
+					<td align="right">
+						<input class="cart_confirm" type="submit" value="Buy"/>
+					</td>
+				</tr>
 			</table>
 			
 		</cf:form>

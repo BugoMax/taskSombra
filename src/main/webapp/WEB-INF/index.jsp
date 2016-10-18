@@ -15,37 +15,14 @@
 			src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.position.js"></script>
 		<script
 			src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.autocomplete.js"></script>
-		
-		<script type="text/javascript">
-			function doAjax(id) {
-				var productid = id;
-				$.ajax({
-					url : 'addToCart', //call method to save to basket
-					type : 'GET',
-					data : ({
-						productId : id
-					}),
-					success : function() { // everything works but can't reach success
-						var firstHalf = "cartButton";
-						var name = firstHalf.concat(productid);
-						var anchor = document.getElementById(name);
-						anchor.text = "Added";
-						anchor.href = "javascript:void(0)";
-					}
-				});
-			}
-		</script>
-		
+		<link href="<c:url value="/resources/images/favicon.ico" />"rel="shortcut icon"type="image/x-icon">
+		<link href="<c:url value="/resources/css/style_new.css" />"rel="stylesheet">
 		<title>Bath and Health</title>
 	</head>
 	<body>
-		<div class="container">
-			<h1>Bath and Health</h1>
-		</div>
-	
 		<div class="container-fluid">
 			<div class="jumbotron" style='background-image: url(admin/image?imgName=banner.jpeg); 
-											background-size: 100%; height: 400px;'>
+											background-size: 100%; background-repeat: no-repeat; height: 400px;'>
 				<h1>Bath and Health</h1>
 				<h3>Do and be</h3>
 				<br>
@@ -56,21 +33,21 @@
 		<div  class="container-fluid">
 			<c:forEach var="product" items="${productList}">
 				<div class="col-sm-12 col-md-4 col-lg-3">
-					<div class="panel panel-default" >
+					<div class="panel panel-default goods" >
 				      <div class="panel-heading" style='padding: 0px 0px;'>
 				      	<a href="product${product.id}"> 
 							<img alt="${product.productName}" src="admin/image?imgName=${product.imgPath}" 
 									class="img-responsive" style="width:100%"/>
 						</a>
 					</div>
-					<div class="panel-body">
-						<a href="product${product.id}">
+					<div class="panel-body goods_name">
+						<a chref="product${product.id}">
 							${product.productName}
 							<br>
 							${product.price}
 						</a>
 					</div>
-				      	<div class="panel-body">
+				      	<div class="panel-body goods_add">
 				      		<a id="cartButton${product.id}"
 								href="javascript:doAjax(${product.id})"> Add to cart</a>
 						</div>
@@ -96,5 +73,24 @@
 				</c:if>
 			</ul>
 		</div>
+		<script type="text/javascript">
+			function doAjax(id) {
+				var productid = id;
+				$.ajax({
+					url : 'addToCart', //call method to save to basket
+					type : 'GET',
+					data : ({
+						productId : id
+					}),
+					success : function() { // everything works but can't reach success
+						var firstHalf = "cartButton";
+						var name = firstHalf.concat(productid);
+						var anchor = document.getElementById(name);
+						anchor.text = "Added";
+						anchor.href = "javascript:void(0)";
+					}
+				});
+			}
+		</script>
 	</body>
 </html>

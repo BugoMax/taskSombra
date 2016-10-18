@@ -18,12 +18,11 @@
 			margin: auto;
 		}
 		</style>
+		<link href="<c:url value="/resources/css/style_new.css" />"rel="stylesheet">
+		<link href="../../../resources/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 		<title>${product.productName}INFO</title>
 	</head>
 	<body>
-		<h1>${product.productName}</h1>
-		
-		
 		<div class="container">
 			<div class="col-sm-12 col-md-6">
 				<div id="myCarousel" class="carousel slide" data-ride="carousel">
@@ -63,14 +62,15 @@
 				
 			</div>
 			<div class="col-sm-12 col-md-5">
-				<div style="margin-bottom: 15px">
-					<p>Description: ${product.description}</p>
-					<p>Category: ${product.category.categoryName}<p>
-					<p>Price: ${product.price}</p>
+				<h1 class="product_name" ">${product.productName}</h1>
+				<div style="margin-bottom: 15px;">
+					<p class="product_p"><span>Price:</span> $${product.price}.</p>
+					<p class="product_p"><span>Description:</span> ${product.description}.</p>
+					<p class="product_p"><span>Category:</span> ${product.category.categoryName}.<p>
 				</div>
 				<cf:form method="GET" action="buy${product.id}"
 					modelAttribute="product">
-					<input class="btn btn-default" type="submit" value="Buy" />
+					<input class="btn btn-default product_add" type="submit" value="Buy" />
 				</cf:form>
 			</div>
 		</div>

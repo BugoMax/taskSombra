@@ -13,7 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Component
 public class Picture {
 	
-	final private String productPicturePath = "C://Users//Sergey//Desktop//eShopImages//Images//";
+	final private String productPicturePath = "C://Users//Максим//Desktop//eShopImages//Images//";
 	
 	
 	public void savePicture(FileUpload uploadForm, PictureType picType) 

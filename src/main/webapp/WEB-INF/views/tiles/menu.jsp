@@ -2,14 +2,13 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/js/themes/base/jquery.ui.all.css">
-
-
 	<script src="${pageContext.request.contextPath}/resources/js/jquery-1.7.1.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.core.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.widget.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.position.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.autocomplete.js"></script>
-	<%-- <link href="<c:url value="/resources/css/style.css" />"rel="stylesheet"> --%>
+	<link href="<c:url value="/resources/css/style_new.css" />"rel="stylesheet">
+  <link href="../../../resources/images/favicon.ico" rel="shortcut icon" type="image/x-icon">
 	<script type="text/javascript">
 		$(function() {
 			var projects = (function() {
@@ -46,7 +45,6 @@
 		});
 	</script>
 	
-	
 	<nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
@@ -55,12 +53,13 @@
 		        <span class="icon-bar"></span>
 		        <span class="icon-bar"></span> 
 	     	 </button>
-			<a class="navbar-brand" href="/eShop">Bath&Health</a>
+				 <a href="/eShop"><img alt="logo" src="/eShop/admin/image?imgName=logo_small.jpg" 
+					class="img-responsive" width="70" height="70" style="margin-left: 80px; margin-right: 10px"></a>
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 		<ul class="nav navbar-nav">
 			 <li class="dropdown"> 
-			 	<a href="/eShop/goods.html" style="display: inline-block;">Goods</a><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="display: inline-block;"><span class="caret"></span></a>
+			 	<a href="/eShop/goods.html" style="display: inline-block; margin-top: 10px; font-size: 18px;">Goods</a><a class="dropdown-toggle" data-toggle="dropdown" href="#" style="display: inline-block;"><span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<c:forEach var="item" items="${categoryTreeMain}">
 						${item}
@@ -68,16 +67,16 @@
 				</ul>
 			</li>
 			<li class="dropdown"> 
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#">Info<span class="caret"></span></a>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" style="margin-top: 10px; font-size: 18px;">Info<span class="caret"></span></a>
 				<ul class="dropdown-menu">
 					<li><a href="/eShop/articles.html">Articles</a></li>
-					<li><a href="">Delivery</a></li>
-					<li><a href="">Contacts</a></li>
+					<li><a href="#">Delivery</a></li>
+					<li><a href="#">Contacts</a></li>
 				</ul>
 			</li>
 			<li>
 				<input id="project" type="text" class="form-control"
-						role="textbox" aria-autocomplete="list" aria-haspopup="true" style="width: 250px; margin: 10px;"
+						role="textbox" aria-autocomplete="list" aria-haspopup="true" style="width: 250px; margin: 10px; margin-top: 20px;" 
     					placeholder="Type what you are looking for...">
 			</li>
 		</ul>
@@ -104,7 +103,7 @@
 							</ul>
 							<a class="test" href="#">News<span class="caret"></span></a>
 							<ul class="dropdown-menu">
-								<li><a href="/eShop/admin/articles.html">Admin Articles</a></li>
+								<lis><a href="/eShop/admin/articles.html">Admin Articles</a></li>
 								<li><a href="/eShop/admin/newArticle.html">New Article</a></li>
 							</ul>
 							<a class="test" href="#">Categories<span class="caret"></span></a>
@@ -118,7 +117,8 @@
 			</c:if>
 				<li class="dropdown"> 
 					<c:if test="${user.id==0 || user == null}">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Account<span class="glyphicon glyphicon-user"></span></a>
+						<a class="dropdown-toggle menu-account" data-toggle="dropdown" href="#"
+						 style="font-size: 16px">Account<span class="glyphicon glyphicon-user" style="margin-left: 10px; margin-top: 10px;"></span></a>
 						<ul class="dropdown-menu">
 							<li>
 								<div class="container-fluid">
@@ -151,11 +151,9 @@
 					</c:if>
 				</li>
 				<li>
-					<a href="/eShop/basket.html">Cart</a>
+					<a href="/eShop/basket.html" class="menu-cart" style="position: relative; top: -195px; width: 100%; font-size: 20px;">Cart<span class="glyphicon glyphicon-shopping-cart" style="margin-left: 10px;"></span></a>
 				</li>
 			</ul>
 		</div>
 	</div>
-			
-
 </nav>

@@ -12,7 +12,7 @@
 		<script src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.widget.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.position.js"></script>
 		<script src="${pageContext.request.contextPath}/resources/js/ui/jquery.ui.autocomplete.js"></script>
-		
+		<link href="<c:url value="/resources/css/style_new.css" />"rel="stylesheet">
 		<script type="text/javascript">
 			function doAjax(id) {
 				var productid = id;
@@ -65,21 +65,21 @@
 			
 		<c:forEach var="product" items="${productList}">
 				<div class="col-sm-12 col-md-4 col-lg-3">
-					<div class="panel panel-default" >
+					<div class="panel panel-default goods" >
 				      <div class="panel-heading" style='padding: 0px 0px;'>
 				      	<a href="product${product.id}"> 
 							<img alt="${product.productName}" src="admin/image?imgName=${product.imgPath}" 
 									class="img-responsive" style="width:100%"/>
 						</a>
 					</div>
-					<div class="panel-body">
+					<div class="panel-body goods_name">
 						<a href="product${product.id}">
 							${product.productName}
 							<br>
 							${product.price}
 						</a>
 					</div>
-				      	<div class="panel-body">
+				      	<div class="panel-body goods_add">
 				      		<a id="cartButton${product.id}"
 								href="javascript:doAjax(${product.id})"> Add to cart</a>
 						</div>
